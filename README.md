@@ -1,16 +1,17 @@
+# Basic Slack Slash Command CDK Template
 
-# Welcome to your CDK Python project!
+This is a basic AWS CDK template for creating a simple Slack slash command backend.
 
-This is a blank project for Python development with CDK.
+The app in this template will display a modal window containing a text box. When submitted, the contents of the text box will be displayed within the Slack channel as an ephemeral message.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Setup
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+1. Create a [Slack slash command](https://api.slack.com/interactivity/slash-commands). The `Request Url` will be created through CDK (you will have to edit the request url in the slash command UI manually, later). This template also makes use of Interactivity (a modal window), which you can enable and set to the same url, later.
+2. Set environment variables like those found in `.envrc_template`. Notably, `SLACK_BEARER_TOKEN` corresponds to the `Bot User OAuth Token` found in the app UI, once installed to your Slack workspace.
+3. Synth (`cdk synth`) and deploy (`cdk deploy`) the CDK stack within this repo, which creates an API Gateway, and two Lambda Functions. There is a high probability you will also have to add several permissions to the IAM Role(s).
+4. Once the stack has been created, edit the slash command request url and interactivity request url to match the created API Gateway endpoint.
+
+## Usage
 
 To manually create a virtualenv on MacOS and Linux:
 
@@ -49,10 +50,10 @@ command.
 
 ## Useful commands
 
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
+- `cdk ls` list all stacks in the app
+- `cdk synth` emits the synthesized CloudFormation template
+- `cdk deploy` deploy this stack to your default AWS account/region
+- `cdk diff` compare deployed stack with current state
+- `cdk docs` open CDK documentation
 
 Enjoy!
