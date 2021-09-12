@@ -47,7 +47,7 @@ def lambda_handler(event, context):
             "view": {
                 "type": "modal",
                 "callback_id": "shortcut_modal",
-                "title": {"type": "plain_text", "text": "/gist"},
+                "title": {"type": "plain_text", "text": "Slash Command Example"},
                 "submit": {"type": "plain_text", "text": "Submit"},
                 "close": {"type": "plain_text", "text": "Cancel"},
                 "blocks": [
